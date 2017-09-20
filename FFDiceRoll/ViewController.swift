@@ -31,6 +31,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         pickerRow = row
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = pickerData[row]
+        let attributedString = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName : UIColor.red])
+        return attributedString
+    }
+    
     @IBOutlet weak var diceUIPicker: UIPickerView!
     @IBOutlet weak var rollDiceResult: UILabel!
     
