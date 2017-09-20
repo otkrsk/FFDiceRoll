@@ -56,15 +56,28 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "20 Sided"
         ]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	
+		override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+			print("You shook me!")
+			let pickerResult = UInt32(pickerRow!)
+			
+			switch pickerResult {
+			case 0:
+				diceResult = GKRandomDistribution.d6()
+			case 1:
+				diceResult = GKRandomDistribution.init(forDieWithSideCount: 10)
+			case 2:
+				diceResult = GKRandomDistribution.d20()
+			default: ds = 6
+			}
+			
+			let dc = String(describing: Int((diceResult?.nextInt())!))
+			rollDiceResult.text = dc
+		}
 
     @IBAction func rollDiceAction(_ sender: Any) {
         let pickerResult = UInt32(pickerRow!)
-        
+			
         switch pickerResult {
             case 0:
                 diceResult = GKRandomDistribution.d6()
@@ -79,5 +92,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         rollDiceResult.text = dc
     }
 
+		override func didReceiveMemoryWarning() {
+			super.didReceiveMemoryWarning()
+			// Dispose of any resources that can be recreated.
+		}
+	
 }
 
