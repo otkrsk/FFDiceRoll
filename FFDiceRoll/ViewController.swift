@@ -69,9 +69,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             default: ds = 6
         }
         
-        let dc = Int((diceResult?.nextInt())!)
-        print(dc)
-        rollDiceResult.text = String(describing: dc)
+        let dc = String(describing: Int((diceResult?.nextInt())!))
+        rollDiceResult.text = dc
     }
 
 }
