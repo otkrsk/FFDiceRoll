@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 		var dr: Int? = 0
 		var noOfDice: Int? = 1
     var diceSum: Int? = 0
-		var oneHighlighted:Bool = true
+		var oneHighlighted:Bool = false
 		var twoHighlighted:Bool = false
 	
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -44,7 +44,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row]
-        let attributedString = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName : UIColor.red])
+        let attributedString = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:0.40, blue:0.40, alpha:1.0)])
         return attributedString
     }
     
@@ -61,9 +61,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "10 Sided",
             "20 Sided"
         ]
-			
-				selectOneDie.isSelected = true
-    }
+        
+        selectOneDie.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
+        }
 	
 		override var shouldAutorotate: Bool {
 			return false
@@ -71,24 +71,35 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 	
 		override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
 				return .portrait
-		}
+    }
 
-		@IBAction func clickChangeState(_ sender: UIButton) {
-			selectOneDie.isSelected = true
-			selectTwoDice.isSelected = false
-			oneHighlighted = true
-			twoHighlighted = false
-			print(twoHighlighted)
-		}
+    @IBAction func clickChangeState(_ sender: UIButton) {
+        // need to darken the background color of the button
+        selectOneDie.isHighlighted = true
+        selectOneDie.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
+        selectTwoDice.backgroundColor = UIColor(red:0.80, green: 0.80, blue:0.80, alpha:1.0)
+        selectTwoDice.isHighlighted = false
+        oneHighlighted = true
+        twoHighlighted = false
+        print(twoHighlighted)
+        xyz()
+    }
 	
-		@IBAction func twoDice(_ sender: UIButton) {
-			selectOneDie.isSelected = false
-			selectTwoDice.isSelected = true
-			oneHighlighted = false
-			twoHighlighted = true
-			print(twoHighlighted)
-		}
-		
+    @IBAction func twoDice(_ sender: UIButton) {
+        // need to darken the background color of the button
+        selectOneDie.isHighlighted = false
+        selectTwoDice.isHighlighted = true
+        selectOneDie.backgroundColor = UIColor(red:0.80, green: 0.80, blue:0.80, alpha:1.0)
+        selectTwoDice.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
+        oneHighlighted = false
+        twoHighlighted = true
+        print(twoHighlighted)
+    }
+
+    func xyz() {
+        print("hello")
+    }
+    
 		override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
 			print("You shook me!")
 			let pickerResult = UInt32(pickerRow!)
