@@ -10,20 +10,20 @@ import UIKit
 import GameplayKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-		@IBOutlet weak var diceUIPicker: UIPickerView!
-		@IBOutlet weak var rollDiceResult: UILabel!
-		@IBOutlet weak var selectOneDie: UIButton!
-		@IBOutlet weak var selectTwoDice: UIButton!
-	
-		var pickerData: [String] = [String]()
+    @IBOutlet weak var diceUIPicker: UIPickerView!
+    @IBOutlet weak var rollDiceResult: UILabel!
+    @IBOutlet weak var selectOneDie: UIButton!
+    @IBOutlet weak var selectTwoDice: UIButton!
+
+    var pickerData: [String] = [String]()
     var diceResult: GKRandomDistribution?
     var pickerRow: Int? = 0
-		var ds: Int? = 0
-		var dr: Int? = 0
-		var noOfDice: Int? = 1
+    var ds: Int? = 0
+    var dr: Int? = 0
+    var noOfDice: Int? = 1
     var diceSum: Int? = 0
-		var oneHighlighted:Bool = false
-		var twoHighlighted:Bool = false
+    var oneHighlighted:Bool = false
+    var twoHighlighted:Bool = false
 	
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -38,7 +38,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // print(row)
         pickerRow = row
     }
     
@@ -63,124 +62,121 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         ]
         
         selectOneDie.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
-        }
+    }
 	
-		override var shouldAutorotate: Bool {
-			return false
-		}
-	
-		override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-				return .portrait
+    // lock orientation
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
+    // lock orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 
     @IBAction func clickChangeState(_ sender: UIButton) {
         // need to darken the background color of the button
-        selectOneDie.isHighlighted = true
+        ButtonStates.buttonState(dice1: selectOneDie, dice2: selectTwoDice)
+        
+        // set the buttons bg color
         selectOneDie.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
         selectTwoDice.backgroundColor = UIColor(red:0.80, green: 0.80, blue:0.80, alpha:1.0)
-        selectTwoDice.isHighlighted = false
+        
+        // set the bool
         oneHighlighted = true
         twoHighlighted = false
         print(twoHighlighted)
-        xyz()
     }
 	
     @IBAction func twoDice(_ sender: UIButton) {
         // need to darken the background color of the button
-        selectOneDie.isHighlighted = false
-        selectTwoDice.isHighlighted = true
+        ButtonStates.buttonState(dice1: selectOneDie, dice2: selectTwoDice)
+
+        // set the buttons bg color
         selectOneDie.backgroundColor = UIColor(red:0.80, green: 0.80, blue:0.80, alpha:1.0)
         selectTwoDice.backgroundColor = UIColor(red:0.60, green: 0.60, blue:0.60, alpha:1.0)
+        
+        // set the bool
         oneHighlighted = false
         twoHighlighted = true
         print(twoHighlighted)
     }
 
-    func xyz() {
-        print("hello")
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        print("You shook me!")
+        let pickerResult = UInt32(pickerRow!)
+        
+        // 1. Get the number of dice rolled
+        if twoHighlighted {
+            noOfDice = 2
+        } else {
+            noOfDice = 1
+        }
+        
+        // 2. Do a while loop to get the total sum
+        // of the dice roll
+        while noOfDice! > 0 {
+            switch pickerResult {
+                case 0:
+                    diceResult = GKRandomDistribution.d6()
+                case 1:
+                    diceResult = GKRandomDistribution.init(forDieWithSideCount: 10)
+                case 2:
+                    diceResult = GKRandomDistribution.d20()
+                default:
+                    diceResult = GKRandomDistribution.d6()
+            } // endswitch
+            
+            dr = Int((diceResult?.nextInt())!)
+            ds = Int(dr!) + Int(ds!)
+            noOfDice = noOfDice! - 1
+        } // endwhile
+        
+        
+        let dc = String(describing: Int((ds)!))
+        rollDiceResult.text = dc
+        ds = 0
     }
-    
-		override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-			print("You shook me!")
-			let pickerResult = UInt32(pickerRow!)
-			
-			// 1. Get the number of dice rolled
-			if twoHighlighted {
-				noOfDice = 2
-			} else {
-				noOfDice = 1
-			}
-			
-			// 2. Do a while loop to get the total sum
-			// of the dice roll
-			while noOfDice! > 0 {
-				switch pickerResult {
-				case 0:
-					diceResult = GKRandomDistribution.d6()
-				case 1:
-					diceResult = GKRandomDistribution.init(forDieWithSideCount: 10)
-				case 2:
-					diceResult = GKRandomDistribution.d20()
-				default:
-					diceResult = GKRandomDistribution.d6()
-					
-				}
-				
-				dr = Int((diceResult?.nextInt())!)
-				// ds = Int((diceResult?.nextInt())!) + Int(ds!)
-				ds = Int(dr!) + Int(ds!)
-				noOfDice = noOfDice! - 1
-			}
-			
-			
-			// let dc = String(describing: Int((diceResult?.nextInt())!))
-			let dc = String(describing: Int((ds)!))
-			rollDiceResult.text = dc
-			ds = 0
-		}
 
     @IBAction func rollDiceAction(_ sender: Any) {
         let pickerResult = UInt32(pickerRow!)
 			
-				// 1. Get the number of dice rolled
-				if twoHighlighted {
-					noOfDice = 2
-				} else {
-					noOfDice = 1
-				}
-			
-				// 2. Do a while loop to get the total sum
-				// of the dice roll
-				while noOfDice! > 0 {
-					switch pickerResult {
-						case 0:
-							diceResult = GKRandomDistribution.d6()
-						case 1:
-							diceResult = GKRandomDistribution.init(forDieWithSideCount: 10)
-						case 2:
-							diceResult = GKRandomDistribution.d20()
-						default:
-							diceResult = GKRandomDistribution.d6()
+        // 1. Get the number of dice rolled
+        if twoHighlighted {
+            noOfDice = 2
+        } else {
+            noOfDice = 1
+        }
+    
+        // 2. Do a while loop to get the total sum
+        // of the dice roll
+        while noOfDice! > 0 {
+            switch pickerResult {
+                case 0:
+                    diceResult = GKRandomDistribution.d6()
+                case 1:
+                    diceResult = GKRandomDistribution.init(forDieWithSideCount: 10)
+                case 2:
+                    diceResult = GKRandomDistribution.d20()
+                default:
+                    diceResult = GKRandomDistribution.d6()
+            } // endswitch
 
-					}
-
-					dr = Int((diceResult?.nextInt())!)
-					// ds = Int((diceResult?.nextInt())!) + Int(ds!)
-					ds = Int(dr!) + Int(ds!)
-					noOfDice = noOfDice! - 1
-				}
-			
-			
-				// let dc = String(describing: Int((diceResult?.nextInt())!))
-				let dc = String(describing: Int((ds)!))
-				rollDiceResult.text = dc
-				ds = 0
+            dr = Int((diceResult?.nextInt())!)
+            ds = Int(dr!) + Int(ds!)
+            noOfDice = noOfDice! - 1
+        } // endwhile
+    
+    
+        let dc = String(describing: Int((ds)!))
+        rollDiceResult.text = dc
+        ds = 0
     }
 
-		override func didReceiveMemoryWarning() {
-			super.didReceiveMemoryWarning()
-			// Dispose of any resources that can be recreated.
-		}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 	
 }
 
