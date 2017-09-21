@@ -1,7 +1,9 @@
 FF Dice Roll
 ============
-**Fighting Fantasy Dice Roll** (or **FF Dice Roll**) is an app that simulates dice rolls.
+**Fighting Fantasy Dice Roll** (or **FF Dice Roll**) is an iOS app that simulates dice rolls.
 
-The name was inspired by Ian Jackson's Fighting Fantasy books, which required 2d6 to play. The book is a _"Dungeons & Dragons"_ type game in which the reader is a character and has to navigate through the book by choosing which "chapters" he or she would like to go to perform actions.
+The name was inspired by Ian Livingstone's Fighting Fantasy books, which requires dice to play. The books are a _"Dungeons & Dragons"_ type game in which the reader is a character and has to navigate through the book by choosing which "chapters" he or she would like to go to perform actions.
 
-I'm building it off the top of my head so there are features that are implemented as I go along.
+Though the books only require six-sided dice, I've included a ten-sided and a twenty-sided dice in the app as well.
+
+I'm building this off the top of my head, as it was started as a little hobby project for me (and also to get familiar with the Swift programming language), so there will be many features that will implemented as I come with with ideas on how to enhance and improve the app.
