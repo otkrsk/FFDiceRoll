@@ -11,7 +11,7 @@ import GameplayKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var diceUIPicker: UIPickerView!
-    @IBOutlet weak var rollDiceResult: UILabel!
+    @IBOutlet weak var rollDiceResult: ShakingDiceResult!
     @IBOutlet weak var selectOneDie: UIButton!
     @IBOutlet weak var selectTwoDice: UIButton!
 
@@ -50,8 +50,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        
         self.diceUIPicker.delegate = self
         self.diceUIPicker.dataSource = self
         
@@ -73,6 +71,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    // MARK: - Button Actions
 
     @IBAction func clickChangeState(_ sender: UIButton) {
         // need to darken the background color of the button
@@ -101,7 +101,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         twoHighlighted = true
         print(twoHighlighted)
     }
-
+    // TODO: Move all the States and Color change to another function
+    
+    // MARK: - Dice Roll
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         print("You shook me!")
         let pickerResult = UInt32(pickerRow!)
@@ -170,7 +172,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
         let dc = String(describing: Int((ds)!))
         rollDiceResult.text = dc
-        ds = 0
+        rollDiceResult.shake() // shake the label!
+        ds = 0 // reset the ds variable
     }
 
     override func didReceiveMemoryWarning() {

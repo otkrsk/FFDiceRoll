@@ -12,9 +12,7 @@ class ButtonStates: NSObject {
     
     /**
         Function to change the Buttons State.
-     
         - parameter dice1: UIButton object.
-     
         - parameter dice2: UIButton object.
     */
     class func buttonState(dice1: UIButton, dice2: UIButton) {
@@ -29,7 +27,6 @@ class ButtonStates: NSObject {
     
     /**
         Function to change the Button Color.
-
         - parameter dice: UIButton object.
      */
     class func buttonColor(dice: UIButton) {

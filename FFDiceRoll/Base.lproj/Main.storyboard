@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="200" id="ysZ-Fu-ZHp"/>
                                 </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP8-oo-gEg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP8-oo-gEg" customClass="ShakingDiceResult" customModule="FFDiceRoll" customModuleProvider="target">
                                 <rect key="frame" x="111" y="133" width="191" height="132"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="96"/>
                                 <color key="textColor" red="0.7799656294324071" green="0.2177289159020884" blue="0.12243647109717708" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

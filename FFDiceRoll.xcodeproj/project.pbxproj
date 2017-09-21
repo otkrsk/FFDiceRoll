@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E190FED31F736EC00089036D /* ButtonStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190FED21F736EC00089036D /* ButtonStates.swift */; };
+		E1B0CCC11F73B227005C648B /* ShakingDiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0CCC01F73B227005C648B /* ShakingDiceResult.swift */; };
 		E1B7AD971F722B8500F3D2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7AD961F722B8500F3D2FB /* AppDelegate.swift */; };
 		E1B7AD991F722B8500F3D2FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7AD981F722B8500F3D2FB /* ViewController.swift */; };
 		E1B7AD9C1F722B8500F3D2FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B7AD9A1F722B8500F3D2FB /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		E190FED21F736EC00089036D /* ButtonStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStates.swift; sourceTree = "<group>"; };
+		E1B0CCC01F73B227005C648B /* ShakingDiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakingDiceResult.swift; sourceTree = "<group>"; };
 		E1B7AD931F722B8500F3D2FB /* FFDiceRoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFDiceRoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B7AD961F722B8500F3D2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B7AD981F722B8500F3D2FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				E1B7AD961F722B8500F3D2FB /* AppDelegate.swift */,
 				E1B7AD981F722B8500F3D2FB /* ViewController.swift */,
 				E1B7AD9A1F722B8500F3D2FB /* Main.storyboard */,
+				E1B0CCC01F73B227005C648B /* ShakingDiceResult.swift */,
 				E190FED21F736EC00089036D /* ButtonStates.swift */,
 				E1B7AD9D1F722B8500F3D2FB /* Assets.xcassets */,
 				E1B7AD9F1F722B8500F3D2FB /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				E1B7AD991F722B8500F3D2FB /* ViewController.swift in Sources */,
 				E1B7AD971F722B8500F3D2FB /* AppDelegate.swift in Sources */,
 				E190FED31F736EC00089036D /* ButtonStates.swift in Sources */,
+				E1B0CCC11F73B227005C648B /* ShakingDiceResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
