@@ -6,4 +6,4 @@ The name was inspired by Ian Livingstone's Fighting Fantasy books, which require
 
 Though the books only require six-sided dice, I've included a ten-sided and a twenty-sided dice in the app as well.
 
-I'm building this off the top of my head, as it was started as a little hobby project for me (and also to get familiar with the Swift programming language), so there will be many features that will implemented as I come with with ideas on how to enhance and improve the app.
+I'm building this off the top of my head, as it was started as a little hobby project for me (and also to get familiar with the Swift programming language), so there will be many features that will implemented as I come up with with ideas on how to enhance and improve the app.
